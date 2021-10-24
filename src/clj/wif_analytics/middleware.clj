@@ -1,7 +1,6 @@
 (ns wif-analytics.middleware
   (:require
    [wif-analytics.env :refer [defaults]]
-   [wif-analytics.config :refer [env]]
    [ring-ttl-session.core :refer [ttl-memory-store]]
    [ring.middleware.defaults :refer [site-defaults wrap-defaults]]))
 
