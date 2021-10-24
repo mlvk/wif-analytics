@@ -11,19 +11,6 @@
          [:host string?]
          [:port int?]]]
 
-   [:xero [:map
-           [:oauth-callback-uri string?]
-           [:client-id string?]
-           [:client-secret string?]
-           [:tenant-name string?]]]
-
-   [:accounting [:map
-                 [:default-cogs-account int?]
-                 [:default-sales-account int?]
-                 [:shipping-revenue-account int?]]]
-
-   [:cloudamqp-url string?]
-
    [:api-key string?]])
 
 (def env-validator
