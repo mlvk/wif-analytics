@@ -1,0 +1,21 @@
+SELECT
+    sl.id stock_level_id,
+    s.id stock_id,
+    s.taken_at,
+    sl.starting,
+    sl.returns,
+    i.name item_name,
+    c.name company_name,
+    l.id location_id,
+    l.name location_name
+FROM
+    stocks s
+    JOIN stock_levels sl ON s.id = sl.stock_id
+    JOIN items i ON i.id = sl.item_id
+    JOIN locations l ON l.id = s.location_id
+    JOIN companies c ON c.id = l.company_id
+WHERE
+    l.id = 176
+    AND s.taken_at > NOW() - INTERVAL '30 DAYS'
+ORDER BY
+    s.taken_at DESC

@@ -1,0 +1,8 @@
+SELECT
+    o.id AS order_id,
+    o.delivery_date AS delivery_date
+FROM
+    orders AS o
+    INNER JOIN locations AS l ON l.id = o.location_id
+WHERE
+    o.delivery_date > NOW() - INTERVAL '30 DAYS'

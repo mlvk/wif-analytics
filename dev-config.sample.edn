@@ -1,0 +1,20 @@
+;; WARNING!
+;; This is a sample config and should not store any specific data, even dev, as it is version controlled.
+
+{:dev true
+ :port 3000
+ ;; when :nrepl-port is set the application starts the nREPL server on load
+ :nrepl-port 7000
+
+;;  Postgres - Connection info
+ :db {:name     "postgres"
+      :user     "postgres"
+      :password "postgres"
+      :host     "localhost"
+      :port     5432}
+
+;;  Endpoint access
+ :api-key "secret"
+
+;;  
+ }

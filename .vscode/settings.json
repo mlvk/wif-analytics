@@ -1,0 +1,75 @@
+{
+  "calva.customREPLCommandSnippets": [
+    {
+      "name": "Start wif-analytics Server",
+      "ns": "user",
+      "repl": "clj",
+      "snippet": "(start)"
+    },
+    {
+      "name": "Stop wif-analytics Server",
+      "ns": "user",
+      "repl": "clj",
+      "snippet": "(stop)"
+    },
+    {
+      "name": "Restart wif-analytics Server",
+      "ns": "user",
+      "repl": "clj",
+      "snippet": "(restart)"
+    },
+    {
+      "name": "Restart DB",
+      "ns": "user",
+      "repl": "clj",
+      "snippet": "(restart-db)"
+    },
+    {
+      "name": "Restart Schedules",
+      "ns": "user",
+      "repl": "clj",
+      "snippet": "(restart-schedules)"
+    },
+    {
+      "name": "Stop Schedules",
+      "ns": "user",
+      "repl": "clj",
+      "snippet": "(stop-schedules)"
+    },
+    {
+      "name": "Start Schedules",
+      "ns": "user",
+      "repl": "clj",
+      "snippet": "(start-schedules)"
+    },
+    {
+      "name": "Reset PM",
+      "ns": "user",
+      "repl": "clj",
+      "snippet": "(reset-pm)"
+    },
+    {
+      "name": "Print env vars",
+      "ns": "user",
+      "repl": "clj",
+      "snippet": "(print-env-vars)"
+    },
+    {
+      "name": "Reload config",
+      "ns": "user",
+      "repl": "clj",
+      "snippet": "(reload-config)"
+    }
+  ],
+  "calva.replConnectSequences": [
+    {
+      "name": "wif-analytics + Reveal",
+      "projectType": "Leiningen",
+      "afterCLJReplJackInCode": "(in-ns 'user) (start) (println \"Access the server at http://localhost:3000\")",
+      "cljsType": "none",
+      "menuSelections": {
+        "leinProfiles": ["dev", "reveal"]
+      }
+    }
+  ]
+}
