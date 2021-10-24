@@ -25,24 +25,6 @@
       "snippet": "(restart-db)"
     },
     {
-      "name": "Restart Schedules",
-      "ns": "user",
-      "repl": "clj",
-      "snippet": "(restart-schedules)"
-    },
-    {
-      "name": "Stop Schedules",
-      "ns": "user",
-      "repl": "clj",
-      "snippet": "(stop-schedules)"
-    },
-    {
-      "name": "Start Schedules",
-      "ns": "user",
-      "repl": "clj",
-      "snippet": "(start-schedules)"
-    },
-    {
       "name": "Reset PM",
       "ns": "user",
       "repl": "clj",

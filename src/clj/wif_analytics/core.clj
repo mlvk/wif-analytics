@@ -6,10 +6,6 @@
             [wif-analytics.config :refer [env]]
             [wif-analytics.handler :as handler]
             [wif-analytics.nrepl :as nrepl]
-            [wif-analytics.services.rabbit-mq]
-            [wif-analytics.services.scheduler]
-            [wif-analytics.services.syncer]
-            [wif-analytics.services.xero]
             [wif-analytics.specs.env :as env-validator])
   (:gen-class))
 
@@ -53,7 +49,6 @@
 (defn start-app [args]
   (let [parsed-args (parse-opts args cli-options)
         mounted-components (-> (mount/with-args parsed-args)
-                               (mount/except [#'wif-analytics.services.syncer/schedules])
                                (mount/start)
                                :started)]
     (doseq [component mounted-components]

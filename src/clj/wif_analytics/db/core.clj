@@ -21,7 +21,7 @@
                              :password           (-> env :db :password)
                              :database-name      (-> env :db :name)
                              :server-name        (-> env :db :host)
-                             :port-number        (-> env :db :port)
+                             :port-number        (or (-> env :db :port) 5432)
                              :register-mbeans    false}))
   :stop (close-datasource conn))
 

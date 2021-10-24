@@ -10,9 +10,7 @@
             [wif-analytics.core]
             [wif-analytics.config]
             [clojure.tools.logging :as log]
-            [wif-analytics.db.core :as db]
-            [wif-analytics.services.rabbit-mq]
-            [wif-analytics.services.syncer]))
+            [wif-analytics.db.core :as db]))
 
 (alter-var-root #'s/*explain-out* (constantly expound/printer))
 
@@ -23,8 +21,7 @@
   You'll usually want to run this on startup."
   []
   (println "Starting")
-  (mount/start-without #'wif-analytics.services.syncer/schedules
-                       #'wif-analytics.core/repl-server))
+  (mount/start-without #'wif-analytics.core/repl-server))
 
 (start)
 (defn stop
@@ -47,59 +44,6 @@
   []
   (mount/stop #'wif-analytics.db.core/conn)
   (mount/start #'wif-analytics.db.core/conn))
-
-(defn restart-rabbit-mq
-  "Restarts rabbitmq connections"
-  []
-  (mount/stop #'wif-analytics.services.rabbit-mq/chan)
-  (mount/stop #'wif-analytics.services.rabbit-mq/conn)
-
-  (mount/start #'wif-analytics.services.rabbit-mq/conn)
-  (mount/start #'wif-analytics.services.rabbit-mq/chan))
-
-(defn stop-rabbit-mq
-  "Restarts rabbitmq connections"
-  []
-  (mount/stop #'wif-analytics.services.rabbit-mq/chan)
-  (mount/stop #'wif-analytics.services.rabbit-mq/conn))
-
-(defn start-rabbit-mq
-  "Restarts rabbitmq connections"
-  []
-  (mount/start #'wif-analytics.services.rabbit-mq/conn)
-  (mount/start #'wif-analytics.services.rabbit-mq/chan))
-
-(defn start-rabbit-mq-subscriptions
-  "Start rabbitmq subscriptions"
-  []
-  (mount/start #'wif-analytics.services.syncer/subscriptions))
-
-(defn stop-rabbit-mq-subscriptions
-  "Stops rabbitmq subscriptions"
-  []
-  (mount/stop #'wif-analytics.services.syncer/subscriptions))
-
-(defn restart-rabbit-mq-subscriptions
-  "Restarts rabbitmq subscriptions"
-  []
-  (mount/stop #'wif-analytics.services.syncer/subscriptions)
-  (mount/start #'wif-analytics.services.syncer/subscriptions))
-
-(defn restart-schedules
-  "Restarts rabbitmq connections"
-  []
-  (mount/stop #'wif-analytics.services.syncer/schedules)
-  (mount/start #'wif-analytics.services.syncer/schedules))
-
-(defn stop-schedules
-  "Restarts rabbitmq connections"
-  []
-  (mount/stop #'wif-analytics.services.syncer/schedules))
-
-(defn start-schedules
-  "Restarts rabbitmq connections"
-  []
-  (mount/start #'wif-analytics.services.syncer/schedules))
 
 (defn reload-config
   "Reload config"
